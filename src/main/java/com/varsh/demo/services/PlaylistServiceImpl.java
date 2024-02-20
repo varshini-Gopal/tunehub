@@ -26,5 +26,14 @@ public class PlaylistServiceImpl implements PlaylistService{
 		
 		return repo.findAll();
 	}
+/*
+	@Override
+	public void deletePlaylist(int playlistId) {
+		// TODO Auto-generated method stub
+		repo.deleteById(playlistId);
+		
+	}
+	*/
+	
 
 }

@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+body{
+	background-image: url('/images/adminHome.jpg');
+	background-size: cover;
+	
+	background-position: center;
+	
+}
+
+table{
+	background: #FFFFF0;
+	
+}
+
+p{
+	align-items: center;
+	font-size: 100px;
+	
+}
+
+#options{
+	display: flex;
+	flex-direction:column;
+	justify-content:space-evenly;
+	gap: 20px;
+}
+
+a{
+	font-size: 40px;
+	background-color: transparent;
+	color: white;
+	text-decoration: none;
+	
+	
+}

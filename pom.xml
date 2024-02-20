@@ -29,6 +29,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- Add this dependency in your pom.xml if using Maven -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

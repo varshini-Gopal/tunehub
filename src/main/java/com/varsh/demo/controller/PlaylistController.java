@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.varsh.demo.entity.Playlist;
 import com.varsh.demo.entity.Song;
@@ -51,6 +52,19 @@ public class PlaylistController {
 		model.addAttribute("allPlaylist", allPlaylist);
 		return "displayPlaylists";
 	}
+	
+	/*
+	@PostMapping("/deletePlaylist")
+	public String deletePlaylist(@RequestParam int playlistId, Model model) {
+		System.out.println("Id: " + playlistId);
+		songService.deleteByPlaylistId(playlistId);
+		playlistService.deletePlaylist(playlistId);
+		
+		List<Playlist> allPlaylist = playlistService.fetchAllPlaylists();
+		model.addAttribute("allPlaylist", allPlaylist);
+		return "displayPlaylists";
+		
+	}*/
 	
 
 }

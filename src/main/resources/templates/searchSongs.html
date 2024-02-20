@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SearchSongs</title>
+<link rel="stylesheet" th:href="@{/css/searchSong.css}">
+</head>
+<body>
+
+
+<div th:if="${song == null}" class="noresult">
+<p>No Result Found</p>
+</div>
+
+<div th:if="${song!= null}" class="result">
+<table border>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Artist</th>
+			<th>Genre</th>
+			<th>Play</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+	<tr>
+		<td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+        <td th:text="${song.genre}"></td>
+        <td>
+            <audio controls>
+                <source th:src="${song.link}" type="audio/mpeg">
+            </audio>
+        </td>
+        
+	</tr>
+	</tbody>
+	</table>
+</div>
+	
+	
+	
+	<div id="options">
+		<div>
+			<a th:href="@{'/searchByArtist/' + ${songName}}" >Search By Artist</a>
+		</div>
+		<div>
+			<a th:href="@{'/searchByGenre/' + ${songName}}" >Search By Genre</a>
+		</div>
+	</div>
+
+
+</body>
+</html>

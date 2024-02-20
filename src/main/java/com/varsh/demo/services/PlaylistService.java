@@ -10,4 +10,6 @@ public interface PlaylistService {
 
 	public List<Playlist> fetchAllPlaylists();
 
+	//public void deletePlaylist(int playlistId);
+
 }

@@ -4,13 +4,17 @@
 <meta charset="ISO-8859-1">
 <title>TuneHub: customer</title>
 <link rel="stylesheet" th:href="@{/css/customerHome.css}">
+ <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
 <h1>Customer Home</h1>
 <div th:unless="${isPremium}" class="non-premium">
+  <div class="navbar">
 	<a href="pay">Get premium</a>
-	<br>
+	
 	<a href="logout">LOGOUT</a>
+	</div>
 </div>
 
 <div th:if="${isPremium}" class="premium">
@@ -21,26 +25,44 @@
 			<th>Artist</th>
 			<th>Genre</th>
 			<th>Play</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	
 	<tbody>
-		<tr th:each="song:${songs}">
-			<td th:text="${song.name}"></td>
-			<td th:text="${song.artist}"></td>
-			<td th:text="${song.genre}"></td>
-			<td>
-				<audio controls>
-					<source th:src="${song.link}" type="audio/mpeg">
-				</audio>
-			</td>
-		</tr>
-	</tbody>
+    <tr th:each="song, iterStat : ${songs}">
+        <td th:text="${song.name}"></td>
+        <td th:text="${song.artist}"></td>
+        <td th:text="${song.genre}"></td>
+        <td>
+            <audio controls>
+                <source th:src="${song.link}" type="audio/mpeg">
+            </audio>
+        </td>
+        <td>
+            <form th:action="@{/addToFavorites}" method="post">
+    <input type="hidden" name="songId" th:value="*{song.id}" id="songId" />
+    <button type="submit" class="heart-btn"><i class="fas fa-heart"></i></button>
+</form>
+
+        </td>
+    </tr>
+</tbody>
 
 </table>
-
+  <div class="navbar">
+	<a href="logout">LOGOUT</a>
+	<a href="userFavorites">FAVORITE</a>
 	
+	<div class="search-box">
+	<form action="/search" method="post">
+    <button class="btn-search"><i class="fas fa-search"></i></button>
+    <input type="text" class="input-search" name="songName" placeholder="Search">
+    </form>
+  </div>
+	
+ </div>
 </div>
-
+</div>
 </body>
 </html>

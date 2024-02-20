@@ -17,6 +17,8 @@ import com.varsh.demo.services.UsersService;
 
 import jakarta.servlet.http.HttpSession;
 
+//@CrossOrigin("*")
+//@RestController
 @Controller
 public class UsersController {
 	
@@ -32,15 +34,21 @@ public class UsersController {
 		if(userStatus == false) {
 			service.addUser(user); 
 			System.out.println("User added");
+			
 		}
 		else {
 			System.out.println("user already exists");
 		}
-		return "home";
+		return "login";
 	}
 	
 	@PostMapping("/validate")
-	public String validate(@RequestParam("email")String email, @RequestParam("password")String password, HttpSession session, Model model) {
+	public String validate(@RequestParam("email")String email, @RequestParam("password") String password, HttpSession session, Model model) {
+		
+		System.out.println("Call recieved");
+		//@RequestBody LoginData data
+		//String email = data.getEmail();
+		//String password = data.getPassword();
 		if(service.validateUser(email, password) == true) {
 			String role = service.getRole(email);
 			session.setAttribute("email", email);
